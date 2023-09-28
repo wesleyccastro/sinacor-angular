@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{tarefa.id > 0 ? "Editar": "Inserir"}} Tarefa</h1>
+<div mat-dialog-content>  
+  <mat-form-field>
+    <mat-label>Descrição</mat-label>
+    <input matInput [(ngModel)]="tarefa.descricao" required>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <mat-label>Data</mat-label>
+    <input type="date"  [ngModel]="tarefa.data | date :'yyyy-MM-dd'" (ngModelChange)="tarefa.data = $event" matInput required>
+  </mat-form-field>
+  &nbsp;
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="tarefa.status" required>
+        <ng-container *ngFor="let item of listaStatus">
+            <mat-option value="{{item.value}}">{{item.name}}</mat-option>
+        </ng-container>      
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="Cancelar()">Cancelar</button>
+  <button mat-button (click)="Salvar()">Salvar</button>
+</div>

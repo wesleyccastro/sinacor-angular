@@ -1,0 +1,21 @@
+<mat-card>
+    <div class="acoes">
+        <button 
+            mat-flat-button 
+            matTooltip="Inserir Tarefa"
+            [matTooltipPosition]="'right'"
+            matTooltipHideDelay="100000"
+            color="primary"
+            class="btn-redondo"
+            (click)="InsereTarefa()"
+            *ngIf="!exibeInserir">
+            +
+        </button>
+    </div>
+    <mat-card-content style="margin-top: 20px;">
+        <app-tarefa-table *ngIf="tarefas.length > 0; else semTarefas" [tarefas]="tarefas"> </app-tarefa-table>
+        <ng-template #semTarefas>
+            <H1>Nehuma tarefa cadastrada ainda.</H1> 
+        </ng-template>
+    </mat-card-content>
+</mat-card>
